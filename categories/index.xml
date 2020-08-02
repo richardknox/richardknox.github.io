@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Richard Knox</title>
-    <link>https://richardknox.github.io/categories/</link>
+    <link>https://rkknox.com/categories/</link>
     <description>Recent content in Categories on Richard Knox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://richardknox.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://rkknox.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
