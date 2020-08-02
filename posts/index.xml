@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>My First Post</title>
-      <link>https://richardknox.github.io/posts/my-first-post/</link>
+      <title>Hello, World!</title>
+      <link>https://richardknox.github.io/posts/hello-world/</link>
       <pubDate>Thu, 30 Jul 2020 20:33:09 +0100</pubDate>
       
-      <guid>https://richardknox.github.io/posts/my-first-post/</guid>
-      <description></description>
+      <guid>https://richardknox.github.io/posts/hello-world/</guid>
+      <description>&lt;p&gt;Hello and welcome. This is my latest attempt at having some sort of personal homepage on the internet, where I can write about any subjects that are currently living in my head.&lt;/p&gt;</description>
     </item>
     
   </channel>
