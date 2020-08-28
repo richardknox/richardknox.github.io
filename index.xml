@@ -6,10 +6,20 @@
     <description>Recent content on Richard Knox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jul 2020 20:33:09 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2020 21:13:14 +0100</lastBuildDate>
     
 	<atom:link href="https://rkknox.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing Is Hard</title>
+      <link>https://rkknox.com/posts/writing-is-hard/</link>
+      <pubDate>Fri, 28 Aug 2020 21:13:14 +0100</pubDate>
+      
+      <guid>https://rkknox.com/posts/writing-is-hard/</guid>
+      <description>I setup a template for this blog, created a mini Hugo deployment, and wrote my hello world post more than two weeks ago now, all with the best intentions to regularly post about my thoughts, not for an audience but to gain clarity with my own ideas.
+So far, I&amp;rsquo;ve produced one draft consisting of not much more than bullet points in an attempt to brain dump some of my thoughts on a subject that I find truly interesting.</description>
+    </item>
     
     <item>
       <title>Hello, World!</title>
