@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Richard Knox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Aug 2020 21:13:14 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2020 22:06:18 +0100</lastBuildDate>
     
 	<atom:link href="https://rkknox.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Keep It Simple</title>
+      <link>https://rkknox.com/posts/keep-it-simple/</link>
+      <pubDate>Thu, 24 Sep 2020 22:06:18 +0100</pubDate>
+      
+      <guid>https://rkknox.com/posts/keep-it-simple/</guid>
+      <description>&lt;p&gt;Why we should be mindful of complexity in A/B test design&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Writing Is Hard</title>

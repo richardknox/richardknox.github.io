@@ -2,13 +2,12 @@
 
 <html lang="en-us">
     <head>
-	<meta name="generator" content="Hugo 0.74.3" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
 
-    <title>Richard Knox</title>
+    <title>Keep It Simple | Richard Knox</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,8 +28,6 @@
     
     
  
-    
-    <link rel="alternate" type="application/rss+xml" href="https://rkknox.com/index.xml" title="Richard Knox" />
     </head>
 
     <body>
@@ -123,80 +120,45 @@
 
         <div id="content" class="content-container">
         
-<div class = "article-content">
-        
-        
-        
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/keep-it-simple/">
-                    Keep It Simple
-                </a>
-            </h2>
-            <div>
-                <p><p>Why we should be mindful of complexity in A/B test design</p></p>
-                
-                <p><a href="/posts/keep-it-simple/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>September 24, 2020</time>
 
-            
-            
-            </div> 
-           
-        </article>
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/writing-is-hard/">
-                    Writing Is Hard
-                </a>
-            </h2>
-            <div>
-                <p><p>I setup a this blog, created a mini Hugo deployment script, and wrote my hello world post more than two weeks ago now. This was with the best intentions to post about my thoughts, not for an audience but to gain clarity with ideas.</p></p>
-                
-                <p><a href="/posts/writing-is-hard/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>August 28, 2020</time>
+<h1 class="post-title">Keep It Simple</h1>
+    
+    <time>September 24, 2020</time>
+    
+    <div>
+        <p>
+        <p>Why we should be mindful of complexity in A/B test design</p>
+<p><em>Note: this blog post is a work in progress. I&rsquo;ve decided to publish even incomplete posts, in order to gain a bit of momentum with my writing. This post will likely change over the next few days. (First posted on 24/09/2020).</em></p>
+<p>A/B testing is a powerful technique. If we have enough traffic, it allows us to generate data on how our customers will react to changes on our platform. But we can suffer from test creep in a similar way to <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> creep in product development.</p>
+<p>I would like to discuss some common drawbacks I see in a testing first organisation, and how to deal with them.</p>
+<h3 id="what-is-ab-testing">What is A/B testing?</h3>
+<p>In a nutshell, A/B testing is taking a group of users and splitting them into two groups. With one group (control) we leave things exactly as they were before. With the other (treatment) we make a change to the user experience.</p>
+<p>We can observe metrics about the behaviour of these two groups, for example click through rate on a button, to see what effect the experience change has on user behaviour.</p>
+<p><img src="/ab_testing.png" alt="A/B testing simplified"></p>
+<h3 id="test-design">Test design</h3>
+<p>In an ideal world, one where we have unlimited users and no restrictions on what we test, designing our A/B tests would be simple.</p>
+<p>But, most of us don&rsquo;t operate in an ideal world. We have restrictions placed on us, whether it&rsquo;s business restrictions, derisking release of new products or even just lack of scale.</p>
+<p>One behaviour I&rsquo;ve witnessed over and over is the tendency to overcomplicate testing by adding more and more test groups.</p>
+<p>It is easy to sit in a meeting discussing a new feature and decide on five different variants that you want to test without considering the complexity that comes with this choice. There is the obvious complexity, around traffic share, significance calculation and so on, but there is also a hidden complexity that comes with it.</p>
+<h3 id="design-with-testing-in-mind">Design with testing in mind</h3>
+<p>To truly effectively test, I believe you need to design your feature with testability in mind. It&rsquo;s no good getting to done status on a project, only to discover that the way things work will make it incredibly difficult to setup a meaningful test.</p>
+<h3 id="testing-is-not-the-goal">Testing is not the goal</h3>
+<p>Why do we run tests? To validate a hypothesis we have around our users behaviour. For example, feature X will raise conversion rate by Y%.</p>
+<p>It is simple enough to state this, but I often see people lose sight of the fact that testing is all about validating our hypothesis.</p>
+<p>It is well known that some of the largest, and fastest growing, companies in the world run 100s and 1,000s of experiments on their user base. Booking.com is often cited as one of these, with the site regularly running <a href="https://partner.booking.com/en-gb/click-magazine/role-experimentation-bookingcom">1,000 concurrent experiments</a>. But, this can lead to a mindset where the number of tests is a metric teams are measured on, and therefore becomes a target.</p>
+<p>As <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhardt&rsquo;s Law</a> tells us, this is a bad thing. When we begin to strive for a certain number of tests, then it is easy to lose sight of the <strong>why</strong> we are testing.</p>
+<p>From personal experience, when we push to increase test frequency, tests become poorly designed or rushed out in order to hit this golden number (be it 1 or 100 tests a week).</p>
+<p>We must be careful to not confuse correlation with causation here. Just because Twitter growth increased <strong>XXX</strong>% when they hit 50 tests a week, does not mean our business will follow suit.</p>
+        </p>
+    </div>
+    
 
-            
-            
-            </div> 
-           
-        </article>
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/hello-world/">
-                    Hello, World!
-                </a>
-            </h2>
-            <div>
-                <p><p>Hello and welcome. This is my latest attempt at having some sort of personal homepage on the internet, where I can write about any subjects that are currently living in my head.</p></p>
-                
-                <p><a href="/posts/hello-world/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>July 30, 2020</time>
+    
 
-            
-            
-            </div> 
-           
-        </article>
+    <div class="page-footer">
         
     </div>
-        
-        <div class="paginator">
-        
-        
-    </div>
+
 
         
         </div>
