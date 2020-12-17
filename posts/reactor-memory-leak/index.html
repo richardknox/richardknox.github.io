@@ -2,13 +2,12 @@
 
 <html lang="en-us">
     <head>
-	<meta name="generator" content="Hugo 0.74.3" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no"/>
 
-    <title>Richard Knox</title>
+    <title>Reactor Netty Memory Leak | Richard Knox</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,8 +28,6 @@
     
     
  
-    
-    <link rel="alternate" type="application/rss+xml" href="https://rkknox.com/index.xml" title="Richard Knox" />
     </head>
 
     <body>
@@ -123,80 +120,41 @@
 
         <div id="content" class="content-container">
         
-<div class = "article-content">
-        
-        
-        
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/reactor-memory-leak/">
-                    Reactor Netty Memory Leak
-                </a>
-            </h2>
-            <div>
-                <p><p>I came across a memory leak in one of my applications recently that puzzled me slightly, and this post is a documentation to ensure that when I (undoubtedly) encounter something like this again I know I have already solved it.</p></p>
-                
-                <p><a href="/posts/reactor-memory-leak/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>December 17, 2020</time>
 
-            
-            
-            </div> 
-           
-        </article>
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/writing-is-hard/">
-                    Writing Is Hard
-                </a>
-            </h2>
-            <div>
-                <p><p>I setup a this blog, created a mini Hugo deployment script, and wrote my hello world post more than two weeks ago now. This was with the best intentions to post about my thoughts, not for an audience but to gain clarity with ideas.</p></p>
-                
-                <p><a href="/posts/writing-is-hard/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>August 28, 2020</time>
+<h1 class="post-title">Reactor Netty Memory Leak</h1>
+    
+    <time>December 17, 2020</time>
+    
+    <div>
+        <p>
+        <p>I came across a memory leak in one of my applications recently that puzzled me slightly, and this post is a documentation to ensure that when I (undoubtedly) encounter something like this again I know I have already solved it.</p>
+<h3 id="the-problem">The problem</h3>
+<p><code>LEAK: ByteBuf.release() was not called before it's garbage-collected</code></p>
+<p>This error was showing up in the logs, very occasionally, and once we threw more traffic at the application I noticed GC time going way up, latency going way up and even one or two instance of out of memory appear.</p>
+<p>Now, this error logging provides a helpful stack trace that points towards <code>io.netty</code> as being somehow involved. Off to Google I went, exception in hand, to find the solution.</p>
+<p>If you search for this on Google you will get a few results, around 5k at the time of publish. However, from reading through the first few pages I didn&rsquo;t find anything pertaining to my exact issue. At this point, I wasn&rsquo;t even sure what part of my code was causing this leak.</p>
+<h3 id="the-solution">The solution</h3>
+<p>Eventually I stumbled upon something, can&rsquo;t quite remember where, but it pointed me in the direction of WebClient and more specifically the use of <code>exchange()</code> vs <code>retrieve()</code>.</p>
+<p>If your app uses <code>exchange()</code>, then you are responsible for consuming the response body and releasing the resources. In our case, we were only doing a check on the <code>HttpStatus</code>, and therefore we hadn&rsquo;t properly implemented anything around consumption of the body and therefore we were never releasing (<code>ByteBuf.release()</code>) the resources and causing this eventual memory leak.</p>
+<p>If your app is using, the more correct, <code>retrieve()</code> method this is all handled for you, and you don&rsquo;t have to concern yourself as a developer with this resource management.</p>
+<p>Turns out, and I&rsquo;m a bad developer for not thoroughly reading the docs&hellip;, that <code>exchange()</code> is in fact deprecated and not advised by the Spring maintainers themselves, and you should use <code>retrieve</code> or <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/function/client/WebClient.html">one of the other methods that are available</a> (<code>exchangeToMono</code>, <code>exchangeToFlux</code>).</p>
+<p>Anyway, if you want to use <code>exchange</code> for some reason (outdate reactor version, <code>retrieve</code> is tricky because of data returned etc. etc.) then you can simply do the following, and it ensures that resources are always released:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">return</span> webclient<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">()</span>
+<span style="color:#f92672">.</span><span style="color:#a6e22e">uri</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;xxx&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">.</span><span style="color:#a6e22e">exchange</span><span style="color:#f92672">()</span>
+<span style="color:#f92672">.</span><span style="color:#a6e22e">flatmap</span><span style="color:#f92672">(</span>response <span style="color:#f92672">-&gt;</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">toEntity</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">))</span>
+<span style="color:#f92672">.</span><span style="color:#a6e22e">map</span><span style="color:#f92672">(</span>ResponseEntity<span style="color:#f92672">::</span>getStatusCode<span style="color:#f92672">);</span>
+</code></pre></div><p>The extra flatmap step is enough to release the resources and avoid the memory leak.</p>
+        </p>
+    </div>
+    
 
-            
-            
-            </div> 
-           
-        </article>
-        
-        <article>
-            <h2>
-                <a href="https://rkknox.com/posts/hello-world/">
-                    Hello, World!
-                </a>
-            </h2>
-            <div>
-                <p><p>Hello and welcome. This is my latest attempt at having some sort of personal homepage on the internet, where I can write about any subjects that are currently living in my head.</p></p>
-                
-                <p><a href="/posts/hello-world/">Read more...</a></p>
-                
-            </div>
-            <div class="post-footer">
-            <time>July 30, 2020</time>
+    
 
-            
-            
-            </div> 
-           
-        </article>
+    <div class="page-footer">
         
     </div>
-        
-        <div class="paginator">
-        
-        
-    </div>
+
 
         
         </div>

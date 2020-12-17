@@ -6,18 +6,18 @@
     <description>Recent content in Posts on Richard Knox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Sep 2020 22:06:18 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 17 Dec 2020 17:09:13 +0000</lastBuildDate>
     
 	<atom:link href="https://rkknox.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Keep It Simple</title>
-      <link>https://rkknox.com/posts/keep-it-simple/</link>
-      <pubDate>Thu, 24 Sep 2020 22:06:18 +0100</pubDate>
+      <title>Reactor Netty Memory Leak</title>
+      <link>https://rkknox.com/posts/reactor-memory-leak/</link>
+      <pubDate>Thu, 17 Dec 2020 17:09:13 +0000</pubDate>
       
-      <guid>https://rkknox.com/posts/keep-it-simple/</guid>
-      <description>&lt;p&gt;Why we should be mindful of complexity in A/B test design&lt;/p&gt;</description>
+      <guid>https://rkknox.com/posts/reactor-memory-leak/</guid>
+      <description>&lt;p&gt;I came across a memory leak in one of my applications recently that puzzled me slightly, and this post is a documentation to ensure that when I (undoubtedly) encounter something like this again I know I have already solved it.&lt;/p&gt;</description>
     </item>
     
     <item>
