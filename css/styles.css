@@ -24,15 +24,21 @@ a {
     opacity: 0.5;
 }
 .container {
-    width: 700px;
-    margin: 0 auto;
     display: grid;
     place-items: center;
     min-height: 100vh;
+}
+.internal {
+    width: 80%;
 }
 h1 {
     font-size: 72px;
 }
 p {
     font-size: 36px;
+}
+@media only screen and (min-width: 768px) {
+    .internal {
+        width: 700px;
+    }
 }
