@@ -1,0 +1,38 @@
+body {
+    background-color: #283044;
+    color: white;
+    font-family: 'Oswald', 'Helvetica', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #EBF5EE;
+    text-decoration: none;
+    border-bottom: 4px solid #EBF5EE;
+}
+.primary {
+    color: #9D8DF1;
+    border-bottom: 4px solid #9D8DF1;
+}
+.social-icon {
+    border: 0;
+    color: #ababab;
+    opacity: 0.2;
+}
+.social-icon:hover {
+    opacity: 0.5;
+}
+.container {
+    width: 700px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+h1 {
+    font-size: 72px;
+}
+p {
+    font-size: 36px;
+}
