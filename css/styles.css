@@ -37,6 +37,17 @@ h1 {
 p {
     font-size: 36px;
 }
+.blog h1 {
+    font-size: 32px;
+}
+.blog p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+.date {
+    font-style: italic;
+}
 @media only screen and (min-width: 768px) {
     .internal {
         width: 700px;
