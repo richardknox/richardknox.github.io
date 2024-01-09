@@ -1,15 +1,9 @@
 body {
-    background-color: #283044;
-    color: white;
-    font-family: 'Oswald', 'Helvetica', sans-serif;
-    font-weight: 700;
+    background-color: #B5C9C3;
+    color: #0B4F6C;
+    font-family: 'PT Serif', 'Helvetica', sans-serif;
     margin: 0;
     padding: 0;
-}
-a {
-    color: #EBF5EE;
-    text-decoration: none;
-    border-bottom: 4px solid #EBF5EE;
 }
 .primary {
     color: #9D8DF1;
@@ -17,7 +11,7 @@ a {
 }
 .social-icon {
     border: 0;
-    color: #ababab;
+    color: #1F271B;
     opacity: 0.2;
 }
 .social-icon:hover {
@@ -30,12 +24,16 @@ a {
 }
 .internal {
     width: 80%;
+    text-align: center;
 }
 h1 {
     font-size: 72px;
+    font-weight: 400;
+    margin: 0;
 }
 p {
     font-size: 36px;
+    margin:0;
 }
 .blog h1 {
     font-size: 32px;
